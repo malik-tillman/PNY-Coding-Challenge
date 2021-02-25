@@ -1,0 +1,43 @@
+<div class="slider__container" (window:resize)="prev()">
+  <div #sliderTrack class="slider__track">
+    <div #slide class="slide" *ngFor="let slide of this.slidesList; let i = index" [attr.data-index]="i">
+      <img class="curve" src="assets/pattern-curve.svg" alt="Curve Background Decoration">
+
+      <div class="image__container">
+        <img class="testimony_image" src="{{ imageBaseURL }}{{ slide.image }}" alt="{{ slide.name }}'s Testimony Image">
+
+        <div class="controls__container">
+          <ng-container *ngIf="i == 0">
+            <button class="control_btn previous" type="button" (click)="prev()" disabled>
+              <img src="assets/icon-prev.svg" alt="Previous Slide Icon"  class="control previous">
+            </button >
+
+            <button class="control_btn next" type="button" (click)="next()">
+              <img src="assets/icon-next.svg" alt="Next Slide Icon" class="control next">
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="i == 1">
+            <button class="control_btn previous" type="button" (click)="prev()">
+              <img src="assets/icon-prev.svg" alt="Previous Slide Icon"  class="control previous">
+            </button>
+
+            <button class="control_btn next" type="button" (click)="next()" disabled>
+              <img src="assets/icon-next.svg" alt="Next Slide Icon" class="control next">
+            </button>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="copy__container">
+        <img class="quote" src="assets/pattern-quotes.svg" alt="Pattern quote">
+
+        <p class="testimony">"{{ slide.testimony }}"</p>
+
+        <span class="name">{{ slide.name }}</span>
+        <span class="role">{{ slide.role }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
